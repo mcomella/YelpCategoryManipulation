@@ -8,5 +8,12 @@
 
 import Foundation
 
-print("Hello, World!")
+let cats = ["hotelstravel", "active", "arts", "localflavor"]
 
+var out = Set<String>()
+for cat in cats {
+    out = out.union(CategoriesUtil.categoryToDescendantsMap[cat]!)
+}
+
+let s = out.joined(separator: "\n")
+try! s.write(toFile: "/Users/mcomella/Downloads/categories-out.json", atomically: true, encoding: .utf8)
